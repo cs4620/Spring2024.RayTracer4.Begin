@@ -47,7 +47,7 @@ class MirrorShader {
     this.baseColor = baseColor
   }
   illuminateObject(rayFrom, rayCollision, normal, collisionObject = null, remaining = 0) {
-    let toSource = rayCollision.minus(rayFrom).normalize()
+    let toSource = rayFrom.minus(rayCollision).normalize()
 
     let reflection = toSource.minus(normal.scale(2*toSource.dot(normal)))
     

@@ -18,7 +18,7 @@ async function main() {
       if (!image[x][y])
         image[x][y] = []
 
-      if (x == 210 && y == 200) {
+      if (x == 245 && y == 200) {
         let noop = 0;
       }
 
@@ -26,7 +26,7 @@ async function main() {
       let color = render(x, y);
       ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`
       ctx.fillRect(x, y, 1, 1)
-      if (x == 315 && y == 200) {
+      if (x == 245 && y == 200) {
         ctx.fillStyle = `rgb(255,0,255)`
         ctx.fillRect(x, y, 1, 1)
       }
@@ -50,7 +50,7 @@ function render(x, y) {
   if (!result) return new Vector3(128, 128, 128);
 
   //Get the location of the collision
-  let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 0)
+  let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 2)
   return rayTracedPixel
 
 }
