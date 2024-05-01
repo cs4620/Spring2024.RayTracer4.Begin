@@ -24,8 +24,8 @@
   <script src="scene.js"></script>
   <script src="sphere.js"></script>
   <script>
-    width = 400;
-    height = 400
+    width = 200;
+    height = 200
     jitterAmount = 0
 
     let planeString = `
@@ -56,18 +56,18 @@ f 1/1/1 5/1/1 2/1/1
     let ambientShader = new AmbientShader(new Vector3(0, 50, 0))
     let diffuseShader = new DiffuseShader(new Vector3(255, 255, 255), new Vector3(1, 0, 0).normalize());
     let diffuseShader2 = new DiffuseShader(new Vector3(0, 255, 255), new Vector3(1, 0, 0).normalize());
-
+    let mirrorShader = new MirrorShader(new Vector3(255,255,255))
 
 
     let planeScenePerspective = new Scene(
       [
-        new RayTracedObject(new Sphere(new Vector3(0, 0, 0), 25),
+        new RayTracedObject(new Sphere(new Vector3(-25, 0, 0), 50),
           //new RayTracedObject(Mesh.fromOBJ(planeString),
           // new MixShader(ambientShader, diffuseShader, 0)
-          diffuseShader
+          mirrorShader
         ),
         new RayTracedObject(
-          new Sphere(new Vector3(50, 0, 0), 25),
+          new Sphere(new Vector3(50, 0, 10), 25),
           diffuseShader2),
       ],
       new Camera(new Vector3(0, 0, 100), new Vector3(0, 0, -1), Vector3.up, Camera.Perspective, Math.PI / 4),

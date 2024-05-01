@@ -46,7 +46,7 @@ function render(x, y) {
   let origin = Scene.scene.camera.getOrigin(startX, startY);
   let direction = Scene.scene.camera.getDirection(startX / (width / 2), startY / (height / 2));
 
-  let result = closestCollision(origin, direction, null, 1);
+  let result = closestCollision(origin, direction, null, 2);
   if (!result) return new Vector3(128, 128, 128);
 
   //Get the location of the collision
