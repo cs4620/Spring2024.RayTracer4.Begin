@@ -64,6 +64,7 @@ class Sphere {
     // return {t,v:new Vector3(o.x + t * d.x, o.y + t * d.y, o.z + t * d.z)};
     let collisionLocation = o.add(d.scale(timeToCollision))
     // return { timeToCollision, collisionLocation };
-    return new Collision(timeToCollision, collisionLocation, collisionLocation.minus(this.center).normalize())
+    let normal = collisionLocation.minus(this.center).normalize()
+    return new Collision(timeToCollision, collisionLocation, normal)
   }
 }

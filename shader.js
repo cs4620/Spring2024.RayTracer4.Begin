@@ -48,8 +48,9 @@ class MirrorShader {
   }
   illuminateObject(rayFrom, rayCollision, normal, collisionObject = null, remaining = 0) {
     let toSource = rayFrom.minus(rayCollision).normalize()
+    let d = toSource.scale(-1,-1)
 
-    let reflection = toSource.minus(normal.scale(2*toSource.dot(normal)))
+    let reflection = d.minus(normal.scale(2*d.dot(normal)))
     
     let result = closestCollision(rayCollision, reflection, collisionObject, remaining-1);
     
