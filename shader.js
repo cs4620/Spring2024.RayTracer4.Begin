@@ -21,10 +21,10 @@ class DiffuseShader {
       coefficient = 0;
 
     //Now check for shadows
-    let shadowRay = closestCollision(rayCollision, this.lightDirection, collisionObject, 1)
-    if (shadowRay) {
-      return new Vector3(0, 0, 0)
-    }
+    // let shadowRay = closestCollision(rayCollision, this.lightDirection, null, 1)
+    // if (shadowRay) {
+    //   return new Vector3(0, 0, 0)
+    // }
     return this.diffuseColor.scale(coefficient);
   }
 }
@@ -47,18 +47,19 @@ class MirrorShader {
     this.baseColor = baseColor
   }
   illuminateObject(rayFrom, rayCollision, normal, collisionObject = null, remaining = 0) {
-    let toSource = rayFrom.minus(rayCollision).normalize()
-    let d = toSource.scale(-1,-1)
+    return new Vector3(0, 128, 128);
+    // let toSource = rayFrom.minus(rayCollision).normalize()
+    // let d = toSource.scale(-1,-1)
 
-    let reflection = d.minus(normal.scale(2*d.dot(normal)))
+    // let reflection = d.minus(normal.scale(2*d.dot(normal)))
     
-    let result = closestCollision(rayCollision, reflection, collisionObject, remaining-1);
+    // let result = closestCollision(rayCollision, reflection, collisionObject, remaining-1);
     
-    if (!result) return new Vector3(0, 128, 128);
+    // if (!result) return new Vector3(0, 128, 128);
 
-    //Get the location of the collision
-    let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 0)
-    return rayTracedPixel
+    // //Get the location of the collision
+    // let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 0)
+    // return rayTracedPixel
   }
 
 }
